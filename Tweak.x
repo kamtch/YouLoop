@@ -54,10 +54,10 @@
 + (id)messageWithText:(id)text;
 - (void)setAction:(id)action;
 @end
-@interface GOOHUDManagerInternal : NSObject
-- (void)showMessageMainThread:(id)message;
-+ (id)sharedInstance;
-@end
+//@interface GOOHUDManagerInternal : NSObject
+//- (void)showMessageMainThread:(id)message;
+//+ (id)sharedInstance;
+//@end
 
 // Retrieves the bundle for the tweak
 NSBundle *YouLoopBundle() {
@@ -100,7 +100,7 @@ static UIImage *getYouLoopImage(NSString *imageSize) {
         // Set the loop mode to the opposite of the current state
         [autoplayController setLoopMode:isLoopEnabled ? 2 : 0];
         // Display snackbar
-        [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(isLoopEnabled ? @"Loop enabled" : @"Loop disabled")]];
+       // [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(isLoopEnabled ? @"Loop enabled" : @"Loop disabled")]];
     }
 }
 %end
