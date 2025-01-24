@@ -76,7 +76,7 @@ static NSBundle *tweakBundle = nil; // not sure why I need to store tweakBundle
 
 // Get the image for the loop button based on the given state and size
 static UIImage *getYouLoopImage(NSString *imageSize) {
-    UIColor *tintColor = IS_ENABLED(@"defaultLoop_enabled") ? [[%c(YTColor) lightRed] setLoopMode:2] : [%c(YTColor) white1];
+    UIColor *tintColor = IS_ENABLED(@"defaultLoop_enabled") ? [%c(YTColor) lightRed] : [%c(YTColor) white1];
     NSString *imageName = [NSString stringWithFormat:@"PlayerLoop@%@", imageSize];
     return [%c(QTMIcon) tintImage:[UIImage imageNamed:imageName inBundle:YouLoopBundle() compatibleWithTraitCollection:nil] color:tintColor];
 }
@@ -94,13 +94,13 @@ static UIImage *getYouLoopImage(NSString *imageSize) {
         YTMainAppVideoPlayerOverlayViewController *playerOverlay = (YTMainAppVideoPlayerOverlayViewController *)mainAppController;
         YTAutoplayAutonavController *autoplayController = (YTAutoplayAutonavController *)[playerOverlay valueForKey:@"_autonavController"];
         // Get the current loop state from the controller's method
-        BOOL isLoopEnabled = ([autoplayController loopMode] == 0);
+        BOOL isLoopEnabled = ([autoplayController loopMode] == 2);
         // Update the key for later use
         [[NSUserDefaults standardUserDefaults] setBool:isLoopEnabled forKey:@"defaultLoop_enabled"];
         // Set the loop mode to the opposite of the current state
         [autoplayController setLoopMode:isLoopEnabled ? 2 : 0];
         // Display snackbar
-       // [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(isLoopEnabled ? @"Loop enabled" : @"Loop disabled")]];
+        //[[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(isLoopEnabled ? @"Loop enabled" : @"Loop disabled")]];
     }
 }
 %end
