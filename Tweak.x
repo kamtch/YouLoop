@@ -72,7 +72,7 @@ NSBundle *YouLoopBundle() {
     });
     return bundle;
 }
-//static NSBundle *tweakBundle = nil; // not sure why I need to store tweakBundle
+static NSBundle *tweakBundle = nil; // not sure why I need to store tweakBundle
 
 // Get the image for the loop button based on the given state and size
 static UIImage *getYouLoopImage(NSString *imageSize) {
