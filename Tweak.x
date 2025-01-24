@@ -94,7 +94,7 @@ static UIImage *getYouLoopImage(NSString *imageSize) {
         YTMainAppVideoPlayerOverlayViewController *playerOverlay = (YTMainAppVideoPlayerOverlayViewController *)mainAppController;
         YTAutoplayAutonavController *autoplayController = (YTAutoplayAutonavController *)[playerOverlay valueForKey:@"_autonavController"];
         // Get the current loop state from the controller's method
-        BOOL isLoopEnabled = ([autoplayController loopMode] == 2);
+        BOOL isLoopEnabled = ([autoplayController loopMode] == 0);
         // Update the key for later use
         [[NSUserDefaults standardUserDefaults] setBool:isLoopEnabled forKey:@"defaultLoop_enabled"];
         // Set the loop mode to the opposite of the current state
